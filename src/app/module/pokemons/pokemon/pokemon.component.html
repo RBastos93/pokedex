@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="row">
+        <div class="col-md-2">
+            <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/{{ id }}.png"
+                loading="lazy"
+                class="img-fluid rounded-start"
+                alt="pokemon"
+            />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <form>
+                    <div class="mb-3 row">
+                        <input type="text" class="form-control" id="name" [value]="pokemon.name" placeholder="Nome do pokémon" aria-describedby="name">
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-auto">
+                            <input type="text" class="form-control" id="comment" placeholder="Comentário">
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary">Adicionar comentário</button>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary">Excluir comentário</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a class="btn">Favoritar</a>
+        </div>
+    </div>
+</div>

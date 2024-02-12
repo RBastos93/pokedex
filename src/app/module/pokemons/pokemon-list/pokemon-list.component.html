@@ -1,0 +1,3 @@
+<app-search></app-search>
+
+<app-pokemon *ngFor="let pokemon of pokemons$ | async; index as index" [pokemon]="pokemon" [id]="(index + 1)"></app-pokemon>
