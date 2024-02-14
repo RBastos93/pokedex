@@ -1,22 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Pokemon } from '../shared/interfaces/pokemon.model';
-import { RouterModule } from '@angular/router';
+
+import { PokemonDetails } from '../shared/interfaces/pokemon.model';
 import { PokemonService } from '../shared/services/pokemon.service';
 
 @Component({
-    selector: 'app-pokemon',
-    templateUrl: './pokemon.component.html',
-    styleUrls: ['./pokemon.component.scss'],
+    selector: 'pk-details',
+    templateUrl: './pokemon-details.component.html',
+    styleUrls: ['pokemon-details.component.scss'],
     standalone: true,
     imports: [
         CommonModule,
-        RouterModule,
     ]
 })
-export class PokemonComponent {
-    @Input() pokemon: Pokemon;
+export class PokemonDetailsComponent {
     @Input() pokemonId: number;
+    @Input() pokemonDetails: PokemonDetails;
 
     constructor(private pokemonService: PokemonService) {}
 
