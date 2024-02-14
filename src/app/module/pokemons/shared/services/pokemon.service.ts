@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { enviroment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+
 import { Observable, map } from 'rxjs';
-import { Pokemon, ResponsePokemon } from '../interfaces/pokemon.model';
+
+import { enviroment } from 'src/environments/environment';
+import { Pokemon, PokemonDetails, ResponsePokemon } from '../interfaces/pokemon.model';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
@@ -15,5 +17,13 @@ export class PokemonService {
             .pipe(
                 map(({ results }: ResponsePokemon) => results),
             );
+    }
+
+    getPokemonDetails(pokemonId: number): Observable<PokemonDetails>  {
+        return this.http.get<PokemonDetails>(`${this.BASE_URL}/pokemon/${pokemonId}`);
+    }
+
+    getImageOfPokemon(pokemonId: number): string {
+        return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`
     }
 }
