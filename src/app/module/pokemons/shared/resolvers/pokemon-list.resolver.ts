@@ -1,13 +1,8 @@
-import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from '@angular/router';
+import { ResolveFn } from '@angular/router';
 import { inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
-import * as pokemonActions from './../store/index';
+import { getPokemons } from '../store';
 
-export const PokemonListResolver: ResolveFn<any> = (
-        route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ): any => {
-        return inject(Store).dispatch(pokemonActions.getPokemons());
-    };
+export const PokemonListResolver: ResolveFn<any> = (): void => inject(Store).dispatch(getPokemons({}));

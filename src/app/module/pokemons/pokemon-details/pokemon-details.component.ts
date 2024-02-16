@@ -19,7 +19,7 @@ export class PokemonDetailsComponent {
 
     constructor(private pokemonService: PokemonService) {}
 
-    getImage() {
+    getImage(): string {
         return this.pokemonService.getImageOfPokemon(this.pokemonId);
     }
 }

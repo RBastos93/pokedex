@@ -1,6 +1,8 @@
 interface Pokemon {
     name: string;
     url: string;
+    comment?: string;
+    isFavorite?: boolean;
 }
 
 interface ResponsePokemon {

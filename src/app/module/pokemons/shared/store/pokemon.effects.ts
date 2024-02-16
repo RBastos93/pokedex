@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 
-import * as pokemonActions from './index';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+
+import { getPokemons, getPokemonsSuccess } from './pokemon.actions';
 import { PokemonService } from '../services/pokemon.service';
-import { Pokemon } from '../interfaces/pokemon.model';
+import { ResponsePokemon } from '../interfaces/pokemon.model';
 
 @Injectable()
 export class PokemonEffects {
@@ -12,9 +13,9 @@ export class PokemonEffects {
 
     getPokemons$ = createEffect(
         () => this.actions$.pipe(
-            ofType(pokemonActions.getPokemons.type),
-            switchMap(() => this.pokemonService.getPokemons()),
-            map((pokemons: Pokemon[]) => pokemonActions.getPokemonsSuccess({pokemons})),
+            ofType(getPokemons.type),
+            switchMap(({ offset, limit }) => this.pokemonService.getPokemons(offset, limit)),
+            map(({ results }: ResponsePokemon) => getPokemonsSuccess({ pokemons: results })),
         )
     );
 }

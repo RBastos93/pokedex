@@ -1,0 +1,39 @@
+
+<div class="card text-center">
+    <img
+        [src]="getImage()"
+        [alt]="pokemon.name"
+        class="card-img-top mx-auto d-block"
+        style="width: 18rem;"
+    />
+    <div class="card-body">
+        <h2 class="card-title mb-4">{{ pokemon.name | titlecase }}</h2>
+        <div class="container text-center mt-4">
+            <form [formGroup]="form">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                        <div class="form-floating">
+                            <textarea
+                                class="form-control"
+                                id="comment-{{pokemonId}}"
+                                formControlName="comment"
+                                style="height: 15rem;"
+                            ></textarea>
+                            <label for="comment-{{pokemonId}}">Comentário</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <button
+                            type="submit"
+                            class="btn btn-primary float-end px-5"
+                            (click)="saveComment()"
+                            [disabled]="form.invalid"
+                        >
+                            Salvar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

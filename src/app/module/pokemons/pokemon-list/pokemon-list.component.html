@@ -1,7 +1,8 @@
-<app-search></app-search>
+<pk-search (onFilter)="onFilter($event)"></pk-search>
 
-<app-pokemon
+<pk-pokemon
     *ngFor="let pokemon of pokemons$ | async; index as index"
     [pokemon]="pokemon"
-    [pokemonId]="(index + 1)"
-></app-pokemon>
+></pk-pokemon>
+
+<pk-pagination [totalItems]="countPokemon" [itemPerPage]="itemPerPage" (previousPage)="previousPage($event)" (nextPage)="nextPage($event)"></pk-pagination>
