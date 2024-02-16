@@ -9,16 +9,16 @@ import { PokemonDetailsComponent } from 'src/app/module/pokemons/pokemon-details
 
 @Component({
     selector: 'pk-modal',
-    templateUrl: './modal.component.html',
-    styleUrls: ['./modal.component.scss'],
+    templateUrl: './modal-details.component.html',
+    styleUrls: ['./modal-details.component.scss'],
     standalone: true,
     imports: [
         CommonModule,
     ]
 })
 export class ModalComponent implements OnDestroy {
-    destroy = new Subject<any>();
-    currentDialog!: NgbModalRef;
+    destroy: Subject<unknown> = new Subject<unknown>();
+    currentDialog: NgbModalRef;
 
     constructor(private modalService: NgbModal, private activatedRoute: ActivatedRoute, router: Router, private location: Location) {
         this.activatedRoute.params.pipe(
@@ -28,8 +28,8 @@ export class ModalComponent implements OnDestroy {
             this.currentDialog.componentInstance.pokemonId = params['id'];
 
             this.activatedRoute.data.subscribe(
-                ({ pokemonDetails }) => this.currentDialog.componentInstance.pokemonDetails = pokemonDetails
-            )
+                ({ pokemonDetails }) => this.currentDialog.componentInstance.pokemonDetails = pokemonDetails,
+            );
 
             this.currentDialog.result.then(
                 () => this.location.back(),
@@ -39,6 +39,6 @@ export class ModalComponent implements OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.destroy.next(undefined);
+        this.destroy.unsubscribe();
     }
 }

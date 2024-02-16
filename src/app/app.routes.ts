@@ -7,7 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { PokemonListResolver } from './module/pokemons/shared/resolvers/pokemon-list.resolver';
 import { pokemonReducer } from './module/pokemons/shared/store/pokemon.reducers';
 import { PokemonEffects } from './module/pokemons/shared/store/pokemon.effects';
-import { PokemonDetaisResolver } from './module/pokemons/shared/resolvers/pokemon-details.resolver';
+import { PokemonDetailsResolver } from './module/pokemons/shared/resolvers/pokemon-details.resolver';
 
 export const appRoutes: Route[] = [
     { path: '',  pathMatch: 'full', redirectTo: '/pokedex', },
@@ -24,8 +24,8 @@ export const appRoutes: Route[] = [
         children: [
             {
                 path: 'pokemon/:id',
-                loadComponent: () => import('./module/pokemons/shared/components/modal/modal.component').then(m => m.ModalComponent),
-                resolve: { pokemonDetails: PokemonDetaisResolver },
+                loadComponent: () => import('./module/pokemons/shared/components/modal/details/modal-details.component').then(m => m.ModalComponent),
+                resolve: { pokemonDetails: PokemonDetailsResolver },
             },
         ]
     }

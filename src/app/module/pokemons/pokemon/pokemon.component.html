@@ -18,20 +18,22 @@
                     </div>
                     <div class="mb-3 row">
                         <div class="col-auto">
-                            <input type="text" class="form-control" id="comment" placeholder="Comentário">
+                            <input type="text" class="form-control" id="comment" [value]="pokemon.comment || ''" placeholder="Comentário">
                         </div>
                         <div class="col-auto">
-                            <button type="button" class="btn btn-primary">Adicionar comentário</button>
+                            <button type="button" class="btn btn-primary" (click)="openModalAddComment()">Adicionar comentário</button>
                         </div>
                         <div class="col-auto">
-                            <button type="button" class="btn btn-primary">Excluir comentário</button>
+                            <button type="button" class="btn btn-primary" (click)="removeComment()">Excluir comentário</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
         <div class="col-md-2">
-            <a class="btn">Favoritar</a>
+            <a class="btn btn-link text-warning" (click)="favoritePokemon()">
+                <i class="bi fs-1" [ngClass]="pokemon.isFavorite ? 'bi-star-fill' : 'bi-star'"></i>
+            </a>
         </div>
     </div>
 </div>

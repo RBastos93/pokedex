@@ -20,6 +20,4 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-    title = 'pokedex';
-}
+export class AppComponent { }

@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
 
-import { Observable, map } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { enviroment } from 'src/environments/environment';
-import { Pokemon, PokemonDetails, ResponsePokemon } from '../interfaces/pokemon.model';
+import { PokemonDetails, ResponsePokemon } from '../interfaces/pokemon.model';
+import { getCountPokemon } from '../store';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
     BASE_URL: string = enviroment.BASE_URL;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private store: Store<{ count: number }>) {}
 
-    getPokemons(): Observable<Pokemon[]> {
-        return this.http.get<ResponsePokemon>(`${this.BASE_URL}/pokemon`)
+    getPokemons(offset: number = 0, limit: number = 10): Observable<ResponsePokemon> {
+        return this.http.get<ResponsePokemon>(`${this.BASE_URL}/pokemon`, { params: { offset, limit } })
             .pipe(
-                map(({ results }: ResponsePokemon) => results),
+                tap(({ count }) => this.store.dispatch(getCountPokemon({ count }))),
             );
     }
 
