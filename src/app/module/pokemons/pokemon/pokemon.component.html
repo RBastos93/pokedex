@@ -1,39 +1,50 @@
-<div class="card">
-    <div class="row">
-        <div class="col-md-2">
-            <a routerLink="pokemon/{{ pokemonId }}">
-                <img
-                    [src]="getImage()"
-                    loading="lazy"
-                    class="img-fluid rounded-start"
-                    alt="pokemon"
-                />
-            </a>
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <form>
-                    <div class="mb-3 row">
-                        <input type="text" class="form-control" id="name" [value]="pokemon.name" placeholder="Nome do pokémon" aria-describedby="name">
-                    </div>
-                    <div class="mb-3 row">
-                        <div class="col-auto">
-                            <input type="text" class="form-control" id="comment" [value]="pokemon.comment || ''" placeholder="Comentário">
-                        </div>
-                        <div class="col-auto">
-                            <button type="button" class="btn btn-primary" (click)="openModalAddComment()">Adicionar comentário</button>
-                        </div>
-                        <div class="col-auto">
-                            <button type="button" class="btn btn-primary" (click)="removeComment()">Excluir comentário</button>
-                        </div>
-                    </div>
-                </form>
+
+<div class="col">
+    <div class="card">
+        <div class="position-relative card-overlay">
+            <img
+                [src]="getImage()"
+                loading="lazy"
+                class="card-img w-50 d-block m-auto"
+                alt="pokemon"
+            />
+            <div class="card-img-overlay text-bg-dark bg-opacity-75 p-0">
+                <a class="btn btn-link text-light position-relative end-0 top-50 start-50 translate-middle" title="Ver detalhes" routerLink="pokemon/{{ pokemonId }}">
+                    <i class="bi bi-eye fs-1"></i>
+                </a>
+                <div class="d-flex flex-column position-absolute end-0 top-0">
+                    <a
+                        class="btn btn-link text-warning btn-favorite me-1"
+                        (click)="favoritePokemon()"
+                        title="{{ pokemon.isFavorite ? 'Desfavoritar' : 'Favoritar' }}"
+                    >
+                        <i class="bi fs-1" [ngClass]="pokemon.isFavorite ? 'bi-star-fill' : 'bi-star'"></i>
+                    </a>
+
+                    <a
+                        class="btn btn-link text-primary btn-favorite me-1"
+                        (click)="openModalAddComment()"
+                        title="{{ pokemon.comment ? 'Editar' : 'Adcionar' }} comentário"
+                    >
+                        <i class="bi bi-chat-right-text fs-3"></i>
+                    </a>
+
+                    <a
+                        class="btn btn-link text-danger btn-favorite me-1"
+                        (click)="removeComment()"
+                        title="Excluir comentário"
+                        *ngIf="pokemon.comment"
+                    >
+                        <i class="bi bi-eraser-fill fs-3"></i>
+                    </a>
+                </div>
+
             </div>
         </div>
-        <div class="col-md-2">
-            <a class="btn btn-link text-warning" (click)="favoritePokemon()">
-                <i class="bi fs-1" [ngClass]="pokemon.isFavorite ? 'bi-star-fill' : 'bi-star'"></i>
-            </a>
+
+        <div class="card-body">
+            <h4 class="card-title text-center mb-3">{{ pokemon.name }}</h4>
+            <p class="card-text text-center text-truncate mb-4" title="{{ pokemon.comment }}">{{ pokemon.comment || 'Faça um comentário'}}</p>
         </div>
     </div>
 </div>

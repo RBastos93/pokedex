@@ -1,0 +1,17 @@
+.card {
+    &-overlay {
+        &:hover {
+            .card {
+                &-img-overlay {
+                    visibility: visible;
+                }
+            }
+        }
+    }
+    &-img-overlay {
+        visibility: hidden;
+        .btn-favorite {
+            visibility: visible;
+        }
+    }
+}
