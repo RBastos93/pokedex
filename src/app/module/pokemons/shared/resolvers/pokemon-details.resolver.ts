@@ -5,4 +5,4 @@ import { Observable } from 'rxjs';
 import { PokemonService } from '../services/pokemon.service';
 import { PokemonDetails } from '../interfaces/pokemon.model';
 
-export const PokemonDetailsResolver: ResolveFn<any> = (route: ActivatedRouteSnapshot): Observable<PokemonDetails> => inject(PokemonService).getPokemonDetails(route.params['id']);
+export const PokemonDetailsResolver: ResolveFn<PokemonDetails> = (route: ActivatedRouteSnapshot): Observable<PokemonDetails> => inject(PokemonService).getPokemonDetails(route.params['id']);

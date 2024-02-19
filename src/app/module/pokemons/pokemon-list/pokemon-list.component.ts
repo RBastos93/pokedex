@@ -25,7 +25,7 @@ import { PaginationComponent } from '../shared/components/pagination/pagination.
 export class PokemonListComponent implements OnInit {
     pokemons$: Observable<Pokemon[]>;
     countPokemon: number;
-    itemPerPage: number = 10;
+    itemPerPage = 10;
 
     constructor(private readonly store: Store<{ pokemons: [], count: number }>) {}
 
@@ -40,7 +40,7 @@ export class PokemonListComponent implements OnInit {
             select(selectPokemonList),
             map(
                 (pokemons: Pokemon[]) =>
-                    pokemons.filter((pokemon: Pokemon) => new RegExp(filter).test(pokemon.name))
+                    pokemons.filter((pokemon: Pokemon) => new RegExp(filter).test(pokemon.name)),
             ),
         );
     }

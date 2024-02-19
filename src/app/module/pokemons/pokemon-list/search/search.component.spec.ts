@@ -23,15 +23,15 @@ describe('SearchComponent', () => {
         expect(component).toBeDefined();
     });
 
-    it('#onFilter.emit should emit filter', fakeAsync(() => {
-        jest.spyOn(component.onFilter, 'emit');
+    it('#filter.emit should emit filter', fakeAsync(() => {
+        jest.spyOn(component.filter, 'emit');
 
         component.form.controls['filter'].setValue('name');
         fixture.detectChanges();
 
         tick(600);
 
-        expect(component.onFilter.emit).toHaveBeenCalledTimes(1);
-        expect(component.onFilter.emit).toHaveBeenCalledWith('name');
+        expect(component.filter.emit).toHaveBeenCalledTimes(1);
+        expect(component.filter.emit).toHaveBeenCalledWith('name');
     }));
 });

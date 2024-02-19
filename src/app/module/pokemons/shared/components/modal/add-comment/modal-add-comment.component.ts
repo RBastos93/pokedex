@@ -10,7 +10,7 @@ import { PokemonService } from '../../../services/pokemon.service';
 import { Pokemon } from '../../../interfaces/pokemon.model';
 
 @Component({
-    selector: 'px-modal-add-comment',
+    selector: 'pk-modal-add-comment',
     templateUrl: './modal-add-comment.component.html',
     styleUrls: ['./modal-add-comment.component.scss'],
     standalone: true,

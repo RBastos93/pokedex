@@ -14,7 +14,7 @@ export class PokemonService {
 
     constructor(private http: HttpClient, private store: Store<{ count: number }>) {}
 
-    getPokemons(offset: number = 0, limit: number = 10): Observable<ResponsePokemon> {
+    getPokemons(offset = 0, limit = 10): Observable<ResponsePokemon> {
         return this.http.get<ResponsePokemon>(`${this.BASE_URL}/pokemon`, { params: { offset, limit } })
             .pipe(
                 tap(({ count }) => this.store.dispatch(getCountPokemon({ count }))),

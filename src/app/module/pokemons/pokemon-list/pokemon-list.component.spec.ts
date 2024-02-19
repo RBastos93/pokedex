@@ -14,19 +14,20 @@ import { PokemonListComponent } from './pokemon-list.component';
 describe('PokemonListComponent', () => {
     let component: PokemonListComponent,
         fixture: ComponentFixture<PokemonListComponent>,
-        store: MockStore<IPokemonState>,
-        mockSelector: MockSelector[] = [
-            {
-                selector: selectCountPokemon,
-                value: 105
-            },
-            {
-                selector: selectPokemonList,
-                value: [
-                    { name: 'name', url: faker.internet.url() },
-                ],
-            },
-        ];
+        store: MockStore<IPokemonState>;
+
+    const mockSelector: MockSelector[] = [
+        {
+            selector: selectCountPokemon,
+            value: 105
+        },
+        {
+            selector: selectPokemonList,
+            value: [
+                { name: 'name', url: faker.internet.url() },
+            ],
+        },
+    ];
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
@@ -54,7 +55,7 @@ describe('PokemonListComponent', () => {
         expect(component).toBeDefined();
     });
 
-    it('#onFilter should filter the pokemon list by name', (done) => {
+    it('#filter should filter the pokemon list by name', (done) => {
         component.onFilter('name');
         fixture.detectChanges();
 

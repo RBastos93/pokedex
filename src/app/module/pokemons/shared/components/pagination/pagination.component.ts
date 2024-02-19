@@ -13,12 +13,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class PaginationComponent {
     @Input() totalItems: number;
     @Input() itemPerPage: number;
-    @Input() skipPages: number = 6;
+    @Input() skipPages = 6;
     @Output() nextPage: EventEmitter<number> = new EventEmitter<number>();
     @Output() previousPage: EventEmitter<number> = new EventEmitter<number>();
-    currentPage: number = 1;
-    skip: number = this.skipPages;
-    back: number = 0;
+    currentPage = 1;
+    skip = this.skipPages;
+    back = 0;
 
     get totalPages(): number {
         return Math.ceil(this.totalItems / this.itemPerPage);

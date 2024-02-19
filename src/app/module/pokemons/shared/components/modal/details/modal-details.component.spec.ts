@@ -8,8 +8,7 @@ import { ModalDetailsComponent } from './modal-details.component';
 
 describe('ModalDetailsComponent', () => {
     let component: ModalDetailsComponent,
-        fixture: ComponentFixture<ModalDetailsComponent>,
-        ngbModal: NgbModal;
+        fixture: ComponentFixture<ModalDetailsComponent>;
 
     const activatedRouteStub: Partial<ActivatedRoute> = {
             params: of({ id: 3 }),
@@ -18,7 +17,7 @@ describe('ModalDetailsComponent', () => {
         modalServiceStub: Partial<NgbModal> = {
             open: jest.fn().mockReturnValue({
                 componentInstance: {},
-                result: new Promise((resolve, reject) => resolve(true))
+                result: new Promise((resolve) => resolve(true))
             } as NgbModalRef),
         };
 
@@ -35,8 +34,6 @@ describe('ModalDetailsComponent', () => {
 
         fixture = TestBed.createComponent(ModalDetailsComponent);
         component = fixture.componentInstance;
-
-        ngbModal = fixture.debugElement.injector.get(NgbModal);
 
         fixture.detectChanges();
     });
