@@ -24,7 +24,7 @@ export const appRoutes: Route[] = [
         children: [
             {
                 path: 'pokemon/:id',
-                loadComponent: () => import('./module/pokemons/shared/components/modal/details/modal-details.component').then(m => m.ModalComponent),
+                loadComponent: () => import('./module/pokemons/shared/components/modal/details/modal-details.component').then(m => m.ModalDetailsComponent),
                 resolve: { pokemonDetails: PokemonDetailsResolver },
             },
         ]

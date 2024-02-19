@@ -4,7 +4,7 @@ import { addComment, favoritePokemon, getCountPokemon, getPokemons, getPokemonsS
 import { IPokemonState } from './pokemon.model';
 import { Pokemon } from '../interfaces/pokemon.model';
 
-export  const initialPokemonsState: IPokemonState = {
+export const initialPokemonsState: IPokemonState = {
     pokemons: [],
     isLoading: false,
     count: 0,

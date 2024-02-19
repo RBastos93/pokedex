@@ -1,5 +1,5 @@
 import { CommonModule, Location } from '@angular/common';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -16,11 +16,13 @@ import { PokemonDetailsComponent } from 'src/app/module/pokemons/pokemon-details
         CommonModule,
     ]
 })
-export class ModalComponent implements OnDestroy {
+export class ModalDetailsComponent implements OnInit, OnDestroy {
     destroy: Subject<unknown> = new Subject<unknown>();
     currentDialog: NgbModalRef;
 
-    constructor(private modalService: NgbModal, private activatedRoute: ActivatedRoute, router: Router, private location: Location) {
+    constructor(private modalService: NgbModal, private activatedRoute: ActivatedRoute, router: Router, private location: Location) { }
+
+    ngOnInit(): void {
         this.activatedRoute.params.pipe(
             takeUntil(this.destroy)
         ).subscribe((params) => {
@@ -28,7 +30,9 @@ export class ModalComponent implements OnDestroy {
             this.currentDialog.componentInstance.pokemonId = params['id'];
 
             this.activatedRoute.data.subscribe(
-                ({ pokemonDetails }) => this.currentDialog.componentInstance.pokemonDetails = pokemonDetails,
+                ({ pokemonDetails }) => {
+                    this.currentDialog.componentInstance.pokemonDetails = pokemonDetails
+                }
             );
 
             this.currentDialog.result.then(

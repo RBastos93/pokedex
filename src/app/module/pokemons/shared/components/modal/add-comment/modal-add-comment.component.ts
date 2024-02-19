@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
@@ -19,7 +19,7 @@ import { Pokemon } from '../../../interfaces/pokemon.model';
         ReactiveFormsModule,
     ]
 })
-export class ModalAddCommentComponent {
+export class ModalAddCommentComponent implements OnInit {
     @Input() pokemon: Pokemon;
     @Input() pokemonId: number;
     form: FormGroup;
@@ -29,9 +29,11 @@ export class ModalAddCommentComponent {
         private formBuilder: FormBuilder,
         private store: Store<{ pokemons: Pokemon[] }>,
         private modalService: NgbModal,
-    ) {
+    ) { }
+
+    ngOnInit(): void {
         this.form = this.formBuilder.group({
-            comment: ['', [ Validators.required, Validators.minLength(1) ]],
+            comment: [this.pokemon?.comment || '', [ Validators.required, Validators.minLength(1) ]],
         });
     }
 
