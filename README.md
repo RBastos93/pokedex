@@ -10,6 +10,13 @@ Criado para a sua diversão no mundo do Pokémon, nesta aplicação será possí
 * [![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=Jest&logoColor=white)](https://ngrx.io/)
 * [![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=Bootstrap&logoColor=white)](https://getbootstrap.com/)
 
+## Tabela de conteúdo
+
+* [Instalação](#instalação)
+* [Uso](#uso)
+* [Testes unitários](#testes-unitários)
+* [Contato](#contato)
+
 ## Começando
 
 Passo a passo para configurar o projeto localmente. Para obter uma cópia local instalada e funcionando, siga as etapas a seguir do exemplo.
