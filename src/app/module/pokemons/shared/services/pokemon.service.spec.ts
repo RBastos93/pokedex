@@ -37,7 +37,7 @@ describe('PokemonService', () => {
             .subscribe({
                 next: ({ count, results }: ResponsePokemon) => {
                     expect(count).toEqual(150);
-                    expect(results.length).toBeGreaterThan(0);
+                    expect(results).toHaveLength(1);
 
                     done();
                 },

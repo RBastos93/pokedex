@@ -16,7 +16,7 @@ describe('HomeComponent', () => {
             providers: [
                 provideMockStore({}),
             ]
-        }).compileComponents();
+        });
 
         fixture = TestBed.createComponent(HomeComponent);
         component = fixture.componentInstance;
