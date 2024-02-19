@@ -15,7 +15,7 @@ import { debounceTime } from 'rxjs';
 })
 
 export class SearchComponent implements OnInit {
-    @Output() onFilter: EventEmitter<string> = new EventEmitter<string>();
+    @Output() filter: EventEmitter<string> = new EventEmitter<string>();
     form: FormGroup;
 
     constructor(private formBuilder: FormBuilder) {
@@ -27,6 +27,6 @@ export class SearchComponent implements OnInit {
     ngOnInit(): void {
         this.form.controls['filter'].valueChanges
             .pipe(debounceTime(500))
-            .subscribe((filter: string) => this.onFilter.emit(filter));
+            .subscribe((filter: string) => this.filter.emit(filter));
     }
 }

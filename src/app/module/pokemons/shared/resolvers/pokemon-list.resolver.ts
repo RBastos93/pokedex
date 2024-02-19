@@ -5,4 +5,4 @@ import { Store } from '@ngrx/store';
 
 import { getPokemons } from '../store';
 
-export const PokemonListResolver: ResolveFn<any> = (): void => inject(Store).dispatch(getPokemons({}));
+export const PokemonListResolver: ResolveFn<void> = (): void => inject(Store).dispatch(getPokemons({}));
