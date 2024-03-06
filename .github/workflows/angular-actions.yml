@@ -1,0 +1,13 @@
+name: build-project-angular
+run-name: ${{ github.actor }} is learning Github actions
+on: [push]
+jobs:
+  ubuntu-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/chcekout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+      - run: npx i
+      - run: npx run test
