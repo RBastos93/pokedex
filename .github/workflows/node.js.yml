@@ -15,4 +15,5 @@ jobs:
           node-version: 20
 
       # - run: node --version
+      - run: npm add --global nx@latest
       - run: npm i --include=optional --include=dev
