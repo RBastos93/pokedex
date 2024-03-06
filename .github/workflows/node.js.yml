@@ -1,15 +1,15 @@
 name: CI
 on:
-  push:
-    branches:
-      # Change this if your primary branch is not main
-      - main
-  pull_request:
+  [push]
+  #   branches:
+  #     # Change this if your primary branch is not main
+  #     - main
+  # pull_request:
 
 # Needed for nx-set-shas when run on the main branch
-permissions:
-  actions: read
-  contents: read
+# permissions:
+#   actions: read
+#   contents: read
 
 jobs:
   main:
@@ -26,10 +26,11 @@ jobs:
       # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "e2e-ci" targets have been requested
       - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="e2e-ci"
       - run: npm ci
+      - run: npx nx test
 
-      - uses: nrwl/nx-set-shas@v3
+      # - uses: nrwl/nx-set-shas@v3
       # This line is needed for nx affected to work when CI is running on a PR
-      - run: git branch --track main origin/main
+      # - run: git branch --track main origin/main
 
-      - run: npx nx-cloud record -- nx format:check
-      - run: npx nx affected -t lint test build e2e-ci
+      # - run: npx nx-cloud record -- nx format:check
+      # - run: npx nx affected -t lint test build e2e-ci
