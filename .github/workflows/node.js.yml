@@ -15,5 +15,5 @@ jobs:
           version: 8
 
       # - run: node --version
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install --no-frozen-lockfile
       - run: pnpm nx test
