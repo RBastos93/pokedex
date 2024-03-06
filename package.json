@@ -41,6 +41,7 @@
     "@angular/cli": "~16.1.0",
     "@angular/compiler-cli": "^16.1.9",
     "@angular/language-service": "^16.1.9",
+    "@angular/localize": "^16.1.9",
     "@faker-js/faker": "^8.4.1",
     "@nx/cypress": "16.6.0",
     "@nx/eslint-plugin": "16.6.0",
