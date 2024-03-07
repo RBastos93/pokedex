@@ -8,10 +8,6 @@ jobs:
   install-dependencies:
     runs-on: ubuntu-latest
 
-    concurrency:
-      group: staging-install-dependencies
-      cancel-in-progress: true
-
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
@@ -21,12 +17,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-  # lint:
-  #   needs: install-dependencies
+  lint:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - name: Run lint
-  #       run: pnpm run lint
+    steps:
+      - name: Run lint
+        run: pnpm run lint
 
   # test:
   #   steps:
