@@ -2,7 +2,7 @@ name: pokedex-ci
 
 run-name: Deploy to ${{ inputs.deploy_target }} by ${{ github.actor }}
 
-on: [push, pullrequest]
+on: [push, pull_request]
 
 jobs:
   install-dependencies:
