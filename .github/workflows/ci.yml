@@ -14,7 +14,7 @@ jobs:
         with:
           version: 8
 
-      - run: git branch --track main origin/main
+      - run: git branch --track master origin/master
 
       - name: Install dependencies
         run: pnpm install
