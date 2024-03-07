@@ -18,6 +18,8 @@ jobs:
         run: pnpm install
 
   lint:
+    needs: install-dependencies
+
     steps:
       - name: Run lint
         run: pnpm run lint
